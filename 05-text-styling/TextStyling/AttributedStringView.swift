@@ -8,8 +8,36 @@
 import SwiftUI
 
 struct AttributedStringView: View {
+    var attributedString: AttributedString {
+        var myString = AttributedString("Hello!!")
+        myString.foregroundColor = .red
+        myString.font = Font.largeTitle
+        return myString
+    }
+    
+    var otherAttributedString: AttributedString {
+        let codingIsAwesome = "Coding is awesome!"
+        var myString = AttributedString()
+        
+        myString.font = Font.title
+        
+        for (index, char) in codingIsAwesome.enumerated() {
+            var letterString = AttributedString( String(char))
+            let red = 0.3
+            let green = 0.3
+            let blue = Double(index % codingIsAwesome.count) / Double(codingIsAwesome.count)
+            
+            letterString.foregroundColor = .init(red: red, green: green, blue: blue)
+            letterString.baselineOffset = Double(index)
+            myString += letterString
+        }
+        
+        return myString
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(attributedString)
+        Text(otherAttributedString)
     }
 }
 

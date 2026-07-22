@@ -8,8 +8,27 @@
 import SwiftUI
 
 struct MarkdownInterpolationView: View {
+    let rainbow = LinearGradient(
+        colors: [
+            .red, .orange, .yellow, .green, .blue, .purple
+        ],
+        startPoint: .leading,
+        endPoint: .trailing,
+    )
+    
+    var rainbowWelcome: Text {
+        Text("*Welcome*")
+            .foregroundStyle(rainbow)
+        
+    }
+    let programText = Text( "**[SwiftUI](https://swiftpackageindex.com/swiftui)**")
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("\(rainbowWelcome) to the word of \(programText).")
+            .padding()
+            .font(.largeTitle)
+            .tint(.cyan)
+            .multilineTextAlignment(.center)
     }
 }
 
